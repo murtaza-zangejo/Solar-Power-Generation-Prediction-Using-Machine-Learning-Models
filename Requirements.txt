@@ -1,0 +1,13 @@
+# Core Data Handling
+numpy
+pandas
+
+# Data Visualization
+matplotlib
+seaborn
+
+# Machine Learning Models & Utilities
+scikit-learn
+
+# Advanced Gradient Boosting Model
+xgboost
