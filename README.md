@@ -1,9 +1,21 @@
-# Solar-Power-Generation-Prediction-Using-Machine-Learning-Models
+## Solar-Power-Generation-Prediction-Using-Machine-Learning-Models
 This model is a machine learning-based solar power generation prediction system that uses historical weather and energy data to forecast solar output. It applies techniques like MLR, Lasso, Ridge, DT, GB, XGB, RF, SVR and Artificial Neural Networks to improve accuracy, helping optimize energy planning and grid management
 
 ## Project Overview
 
-This project focuses on predicting DC power generation in a solar power plant based on weather conditions and time-based features. It involves a complete machine learning pipeline, from exploratory data analysis and preprocessing to building and evaluating multiple regression models.
+**📌 Overview**
+This project develops a predictive analytics system for solar energy generation using machine learning techniques.
+It processes real-world solar plant data and evaluates multiple regression models to accurately forecast DC power output based on weather conditions and time-based patterns.
+
+The system is designed following industry-grade ML pipeline practices, including preprocessing, feature engineering, model benchmarking, and evaluation.
+
+**🎯 Objective**
+
+To build a robust machine learning model that predicts solar power generation using:
+
+Weather conditions (irradiance, temperature)
+Time-series patterns (hour, day of week)
+Historical energy production data
 
 ## Table of Contents
 
@@ -18,18 +30,29 @@ This project focuses on predicting DC power generation in a solar power plant ba
 
 ## Features
 
-- **Data Loading & Inspection**: Loading and initial inspection of generation and weather sensor data.
-- **Data Preprocessing**: Handling datetime conversions, merging datasets, resampling to a consistent frequency (15-minute intervals), and imputing missing values.
-- **Exploratory Data Analysis (EDA)**: Visualizing correlations, distributions, and relationships between features and the target variable.
-- **Feature Engineering**: Extracting time-based features (hour, minute, day of week) from datetime objects.
-- **Data Splitting & Scaling**: Dividing data into training and testing sets and applying `StandardScaler` to features.
-- **Model Training**: Implementing and training various regression models.
+- **Data Loading & Inspection**: For  this project we are using Generation and weather data of a solar power plant which is downloaded from Kaggle https://www.kaggle.com/datasets/anikannal/solar-power-generation-data. We'll load the `Generation_Data.csv` and `Weather_Sensor_Data.csv` files into pandas DataFrames. We'll inspect the data types, check for date ranges, and convert date columns to datetime objects. We'll also merge the two datasets.
+- **Data Preprocessing**: Handling datetime conversions, merging datasets, resampling to a consistent frequency (15-minute intervals), and imputing missing values. To ensure consistent time series and handle potential misalignments or missing intervals, we'll resample the data to a 15-minute frequency, taking the mean of values within each interval. We'll check for any missing values after resampling and impute them using forward-fill, which is a common method for time-series data.
+- **Exploratory Data Analysis (EDA)**: Visualizing correlations, distributions, and relationships between features and the target variable. Visualize the correlation between all numerical features and the target variable (DC_POWER) using a heatmap. This helps understand the relationships between variables.
+- **Feature Engineering**: Extract relevant time-based features such as 'hour', 'minute', and 'day of week' from the Date_Time column, as these can influence solar power generation. We'll define our independent variables (X) which are the features we'll use for prediction, and our dependent variable (y), which is the DC_POWER we want to predict.
+- **Data Splitting & Scaling**: Dividing data into training and testing sets and applying `StandardScaler` to features. We'll split our dataset into a training set (80%) and a testing set (20%) to evaluate the model's performance on unseen data. Scaling features is often crucial for models that are sensitive to the magnitude of features (e.g., neural networks or models using regularization). We will scale our features using StandardScaler, fitting it on the training data and transforming both training and test data.
+- **🤖 Machine Learning Models Training**: In this  project we have trained various regression algorithms, 
+The following regression models were implemented:
+
+Linear Regression
+Ridge Regression
+Lasso Regression
+KNN Regressor
+Decision Tree Regressor
+Random Forest Regressor
+Gradient Boosting Regressor
+XGBoost Regressor
+Support Vector Regressor (SVR)
 - **Model Evaluation**: Assessing model performance using R-squared, MAE, MSE, and RMSE, along with actual vs. predicted plots and residual analysis.
-- **Model Comparison**: A comparative analysis of all trained models to identify the best performer.
+- **Model Comparison**: A comparative analysis of all trained models to identify the best performer. And compared their results, so that Gradient Boosting won by achieving highest r2-score of 0.9946, followed by random forest and xgboost with r2-score of 0.9944 and 0.9936 respectively
 
 ## Data Source
 
-The data used in this project is sourced from the UCI Machine Learning Repository and consists of two main datasets:
+The data used in this project is sourced from Kaggle datasets and consists of two main datasets:
 
 1.  **`Generation_Data.csv`**: Contains information about power generation (DC and AC power, daily yield, total yield) from the solar plant.
 2.  **`Weather_Sensor_Data.csv`**: Contains environmental data such as ambient temperature, module temperature, and irradiation.
@@ -39,17 +62,40 @@ Both datasets are collected over a period from May 15, 2020, to June 17, 2020, w
 ## Methodology
 
 The project follows a standard machine learning workflow:
+🧠 ML Pipeline Architecture
+Data Collection
+      ↓
+Data Cleaning & Preprocessing
+      ↓
+Time-Series Alignment (15-min resampling)
+      ↓
+Data Visualization
+      ↓
+Feature Engineering
+      ↓
+Train/Test Split
+      ↓
+Feature Scaling (StandardScaler) and Data Splitting
+      ↓
+Model Training (Multiple Regressors)
+      ↓
+Model Evaluation & Comparison
+      ↓
+Best Model Selection
 
-1.  **Initial Setup**: Import necessary libraries.
-2.  **Data Loading**: Load `Generation_Data.csv` and `Weather_Sensor_Data.csv`.
-3.  **Data Inspection & Preprocessing**: Convert `DATE_TIME` columns to datetime objects, merge the two datasets on `Date_Time`.
-4.  **Resampling**: Resample the merged data to a 15-minute frequency to create a consistent time series.
-5.  **Missing Value Handling**: Use forward-fill imputation to address any missing values after resampling.
-6.  **Data Visualization**: Generate correlation heatmaps, pair plots, box plots for outlier detection, and histograms for feature distribution analysis.
-7.  **Feature Engineering**: Extract 'hour', 'minute', and 'day_of_week' from the `Date_Time` column.
-8.  **Data Splitting**: Split the dataset into training (80%) and testing (20%) sets.
-9.  **Data Scaling**: Apply `StandardScaler` to the features of both training and testing sets.
-10. **Model Training & Evaluation**: Train and evaluate a suite of regression models, comparing their performance.
+1. **Data Collection**
+    **Initial Setup**: Import necessary libraries.
+    **Data Loading**: Load `Generation_Data.csv` and `Weather_Sensor_Data.csv`.
+2. **Data Cleaning & Preprocessing**: Convert `DATE_TIME` columns to datetime objects, merge the two datasets on `Date_Time`.
+3. **Time-Series Alignment (15-min resampling)**
+    **Resampling**: Resample the merged data to a 15-minute frequency to create a consistent time series.
+    **Missing Value Handling**: Use forward-fill imputation to address any missing values after resampling.
+4. **Data Visualization**: Generate correlation heatmaps, pair plots, box plots for outlier detection, and histograms for feature distribution analysis.
+5. **Feature Scaling (StandardScaler) and Data Splitting**
+    **Feature Engineering**: Extract 'hour', 'minute', and 'day_of_week' from the `Date_Time` column.
+    **Data Splitting**: Split the dataset into training (80%) and testing (20%) sets.
+    **Data Scaling**: Apply `StandardScaler` to the features of both training and testing sets.
+6. **Model Training & Evaluation**: Train and evaluate a suite of regression models, comparing their performance.
 
 ## Machine Learning Models
 
