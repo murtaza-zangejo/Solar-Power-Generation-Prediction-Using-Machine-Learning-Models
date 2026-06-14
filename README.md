@@ -37,16 +37,15 @@ Historical energy production data
 - **Data Splitting & Scaling**: Dividing data into training and testing sets and applying `StandardScaler` to features. We'll split our dataset into a training set (80%) and a testing set (20%) to evaluate the model's performance on unseen data. Scaling features is often crucial for models that are sensitive to the magnitude of features (e.g., neural networks or models using regularization). We will scale our features using StandardScaler, fitting it on the training data and transforming both training and test data.
 - **🤖 Machine Learning Models Training**: In this  project we have trained various regression algorithms, 
 The following regression models were implemented:
-
-Linear Regression
-Ridge Regression
-Lasso Regression
-KNN Regressor
-Decision Tree Regressor
-Random Forest Regressor
-Gradient Boosting Regressor
-XGBoost Regressor
-Support Vector Regressor (SVR)
+Linear Regression.
+Ridge Regression.
+Lasso Regression.
+KNN Regressor.
+Decision Tree Regressor.
+Random Forest Regressor.
+Gradient Boosting Regressor.
+XGBoost Regressor.
+Support Vector Regressor (SVR).
 - **Model Evaluation**: Assessing model performance using R-squared, MAE, MSE, and RMSE, along with actual vs. predicted plots and residual analysis.
 - **Model Comparison**: A comparative analysis of all trained models to identify the best performer. And compared their results, so that Gradient Boosting won by achieving highest r2-score of 0.9946, followed by random forest and xgboost with r2-score of 0.9944 and 0.9936 respectively
 
@@ -58,6 +57,12 @@ The data used in this project is sourced from Kaggle datasets and consists of tw
 2.  **`Weather_Sensor_Data.csv`**: Contains environmental data such as ambient temperature, module temperature, and irradiation.
 
 Both datasets are collected over a period from May 15, 2020, to June 17, 2020, with varying granularities that are harmonized during preprocessing.
+
+**⚙️ Tech Stack**
+Language: Python
+Libraries: Pandas, NumPy, Scikit-learn, XGBoost
+Visualization: Matplotlib, Seaborn
+Environment: Jupyter Notebook, Colab
 
 ## Methodology
 
@@ -90,7 +95,8 @@ Best Model Selection
 3. **Time-Series Alignment (15-min resampling)**
     **Resampling**: Resample the merged data to a 15-minute frequency to create a consistent time series.
     **Missing Value Handling**: Use forward-fill imputation to address any missing values after resampling.
-4. **Data Visualization**: Generate correlation heatmaps, pair plots, box plots for outlier detection, and histograms for feature distribution analysis.
+4. **Data Visualization**: Generate correlation heatmaps, pair plots, box plots for outlier detection, and histograms for feature distribution analysis.<img width="686" height="335" alt="image" src="https://github.com/user-attachments/assets/d120da13-2744-432e-9f26-37e737821954" />
+
 5. **Feature Scaling (StandardScaler) and Data Splitting**
     **Feature Engineering**: Extract 'hour', 'minute', and 'day_of_week' from the `Date_Time` column.
     **Data Splitting**: Split the dataset into training (80%) and testing (20%) sets.
@@ -114,6 +120,11 @@ The following regression models are implemented and evaluated:
 ## Results
 
 The models are evaluated based on R-squared, Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE). A bar chart visualizes the R-squared scores of all models for easy comparison. Initial results indicate that **Gradient Boosting** and **Random Forest** models generally perform best, achieving high R-squared scores, suggesting they capture the variance in DC power generation effectively.
+<img width="438" height="290" alt="image" src="https://github.com/user-attachments/assets/190c8b3d-8096-4fe0-8a72-560ad94e20b7" />
+
+<img width="170" height="254" alt="image" src="https://github.com/user-attachments/assets/d248cbc8-b383-49fe-b668-9554f1d4b451" />
+<img width="530" height="293" alt="image" src="https://github.com/user-attachments/assets/83627e14-e37d-4aa6-963e-ef64fa659022" />
+
 
 
 ## Setup and Usage
